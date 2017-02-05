@@ -1,0 +1,73 @@
+{
+  "name": "opinionated-repo-setup",
+  "version": "0.0.1",
+  "description": "A command line utility to set up GitHub repositories in the standard way that Dave Sag likes them.",
+  "main": "bin/index.js",
+  "engines": {
+    "node": ">=6.9.4",
+    "npm": "^3"
+  },
+  "bin": {
+    "labeller": "bin/cli"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "clean": "rm -rf bin/index.js output/",
+    "start": "node bin/index.js",
+    "babel-v": "babel --version",
+    "babel": "babel src --out-dir bin",
+    "build": "npm run clean && npm run babel",
+    "dev": "babel-node src/index.js",
+    "test": "find ./test -name '*_spec.js' | NODE_ENV=test xargs mocha --compilers js:babel-core/register --require ./test/test_helper.js"
+  },
+  "keywords": [
+    "github",
+    "setup"
+  ],
+  "author": "Dave Sag <davesag@gmail.com>",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": 6.9
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davesag/opinionated-repo-setup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davesag/opinionated-repo-setup/issues"
+  },
+  "homepage": "https://github.com/davesag/opinionated-repo-setup#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-preset-env": "^1.1.8",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "chai-string": "^1.3.0",
+    "faker": "^3.1.0",
+    "mocha": "^3.1.2",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0",
+    "sinon-stub-promise": "^4.0"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "mustache": "^2.3.0",
+    "prompt": "^1.0.0",
+    "username": "^2.3.0"
+  }
+}
