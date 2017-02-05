@@ -1,18 +1,12 @@
-import fs from 'fs'
-import path from 'path'
+import fs       from 'fs'
+import path     from 'path'
 import Mustache from 'mustache'
+
 import getTemplates from './getTemplates'
+import write        from './write'
+import makeFolder   from './makeFolder'
 
 const handleError = err => console.error('Caught error', err)
-
-const write = (file, content) => {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(file, content, err => {
-      if (err) return reject(err)
-      resolve()
-    })
-  })
-}
 
 const render = outputFolder => (owner, repo) => {
   const view = {
@@ -40,5 +34,6 @@ const render = outputFolder => (owner, repo) => {
 }
 
 module.exports = {
-  render
+  render,
+  makeFolder
 }

@@ -1,6 +1,5 @@
-import {render} from './filemaker'
-import makeFolder from './filemaker/makeFolder'
-import getUserInput from './userInput'
+import {render, makeFolder} from './filemaker'
+import getUserInput         from './userInput'
 
 require('dotenv').config()
 
@@ -10,6 +9,6 @@ process.on('unhandledRejection', function(reason, p) {
 
 getUserInput('Repo Setup').then(({token, owner, repo, outputFolder}) => {
   makeFolder(outputFolder).then(() => {
-    render(outputFolder)('testOwner', 'testRepo')
+    render(outputFolder)(owner, repo)
   }, console.log)
 }, console.log)
