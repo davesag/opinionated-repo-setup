@@ -8,7 +8,7 @@
     "npm": "^3"
   },
   "bin": {
-    "labeller": "bin/cli"
+    "repo-setup": "bin/cli"
   },
   "scripts": {
     "prepublish": "npm run build",

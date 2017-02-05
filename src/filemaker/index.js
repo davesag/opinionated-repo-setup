@@ -28,7 +28,6 @@ const render = outputFolder => (owner, repo) => {
             template,
             view
           )
-          console.log('outputFolder', outputFolder, output)
           return write(path.join(outputFolder, output), rendered)
         },
         handleError
